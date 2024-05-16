@@ -20,6 +20,20 @@ struct GameView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            HStack {
+                Image(studentAnimal)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                Spacer()
+                Image(teacherAnimal)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+            }
+            .padding()
+            
             Text("Score: \(score)")
                 .font(.largeTitle)
                 .padding()
@@ -42,6 +56,19 @@ struct GameView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Spacer()
+            
+            VStack(alignment: .leading) {
+                Text("Game Rules:")
+                    .font(.headline)
+                    .padding(.bottom, 5)
+                Text("Number of turns: \(questions.count)")
+                Text("Range: Up to \(questions.first?.text.components(separatedBy: " ")[2] ?? "12")")
+            }
+            .padding()
+            .background(Color.yellow.opacity(0.3))
+            .cornerRadius(10)
+            .padding()
+            
         }
         .padding()
         .alert(isPresented: $showingScore) {

@@ -10,8 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     @Binding var gameIsActive: Bool
     @Binding var questions: [Question]
-    @State private var selectedTable = 12
-    @State private var numberOfQuestions = 10
+    @Binding var selectedTable: Int
+    @Binding var numberOfQuestions: Int
+    @Binding var showingSettings: Bool
     
     var body: some View {
         VStack {
@@ -25,6 +26,8 @@ struct SettingsView: View {
             Button("Start Game") {
                 questions = Question.generateQuestions(for: selectedTable, count: numberOfQuestions)
                 gameIsActive = true
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                showingSettings = false
             }
             .padding()
             .background(Color.blue)
@@ -43,7 +46,10 @@ struct SettingsView_Previews: PreviewProvider {
                 Question(text: "What is 2 x 3?", answer: 6),
                 Question(text: "What is 4 x 5?", answer: 20),
                 Question(text: "What is 6 x 7?", answer: 42)
-            ])
+            ]),
+            selectedTable: .constant(12),
+            numberOfQuestions: .constant(10),
+            showingSettings: .constant(true)
         )
     }
 }
