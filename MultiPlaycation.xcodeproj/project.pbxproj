@@ -11,6 +11,8 @@
 		6D3E2D512BF57CFC00A5DD73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E2D502BF57CFC00A5DD73 /* ContentView.swift */; };
 		6D3E2D532BF57CFD00A5DD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3E2D522BF57CFD00A5DD73 /* Assets.xcassets */; };
 		6D3E2D562BF57CFD00A5DD73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3E2D552BF57CFD00A5DD73 /* Preview Assets.xcassets */; };
+		6D3E2D5D2BF5E4AB00A5DD73 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E2D5C2BF5E4AB00A5DD73 /* GameView.swift */; };
+		6D3E2D5F2BF5E84E00A5DD73 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E2D5E2BF5E84E00A5DD73 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		6D3E2D502BF57CFC00A5DD73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6D3E2D522BF57CFD00A5DD73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D3E2D552BF57CFD00A5DD73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6D3E2D5C2BF5E4AB00A5DD73 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		6D3E2D5E2BF5E84E00A5DD73 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				6D3E2D4E2BF57CFC00A5DD73 /* MultiPlaycationApp.swift */,
 				6D3E2D502BF57CFC00A5DD73 /* ContentView.swift */,
+				6D3E2D5E2BF5E84E00A5DD73 /* SettingsView.swift */,
+				6D3E2D5C2BF5E4AB00A5DD73 /* GameView.swift */,
 				6D3E2D522BF57CFD00A5DD73 /* Assets.xcassets */,
 				6D3E2D542BF57CFD00A5DD73 /* Preview Content */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D3E2D512BF57CFC00A5DD73 /* ContentView.swift in Sources */,
+				6D3E2D5F2BF5E84E00A5DD73 /* SettingsView.swift in Sources */,
+				6D3E2D5D2BF5E4AB00A5DD73 /* GameView.swift in Sources */,
 				6D3E2D4F2BF57CFC00A5DD73 /* MultiPlaycationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
