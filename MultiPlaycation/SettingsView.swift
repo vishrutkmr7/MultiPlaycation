@@ -12,6 +12,8 @@ struct SettingsView: View {
     @Binding var questions: [Question]
     @Binding var selectedTable: Int
     @Binding var numberOfQuestions: Int
+    @Binding var studentAnimal: String
+    @Binding var teacherAnimal: String
     @Binding var showingSettings: Bool
     
     var body: some View {
@@ -26,6 +28,9 @@ struct SettingsView: View {
             Button("Start Game") {
                 questions = Question.generateQuestions(for: selectedTable, count: numberOfQuestions)
                 gameIsActive = true
+                let animals = AnimalProvider.getRandomAnimals()
+                studentAnimal = animals.student
+                teacherAnimal = animals.teacher
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 showingSettings = false
             }
@@ -49,6 +54,8 @@ struct SettingsView_Previews: PreviewProvider {
             ]),
             selectedTable: .constant(12),
             numberOfQuestions: .constant(10),
+            studentAnimal: .constant("bear"),
+            teacherAnimal: .constant("narwhal"),
             showingSettings: .constant(true)
         )
     }

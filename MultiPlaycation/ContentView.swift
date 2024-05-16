@@ -14,6 +14,8 @@ struct ContentView: View {
     @State private var isFirstLaunch: Bool
     @State private var selectedTable = 12
     @State private var numberOfQuestions = 10
+    @State private var studentAnimal = "bear"
+    @State private var teacherAnimal = "narwhal"
     
     init() {
         let firstLaunch = !UserDefaults.standard.bool(forKey: "HasLaunched")
@@ -28,11 +30,10 @@ struct ContentView: View {
         ZStack {
             VStack {
                 if gameIsActive {
-                    let animals = AnimalProvider.getRandomAnimals()
                     GameView(
                         questions: questions,
-                        studentAnimal: animals.student,
-                        teacherAnimal: animals.teacher,
+                        studentAnimal: studentAnimal,
+                        teacherAnimal: teacherAnimal,
                         endGame: endGame
                     )
                 }
@@ -62,6 +63,8 @@ struct ContentView: View {
                 questions: $questions,
                 selectedTable: $selectedTable,
                 numberOfQuestions: $numberOfQuestions,
+                studentAnimal: $studentAnimal,
+                teacherAnimal: $teacherAnimal,
                 showingSettings: $showingSettings
             )
         }
