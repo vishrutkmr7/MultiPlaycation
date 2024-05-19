@@ -36,6 +36,26 @@ extension View {
     }
 }
 
+struct SmoothOscillationModifier: ViewModifier {
+    @State private var rotation: Double = -15.0
+    
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(.degrees(rotation), anchor: .bottom)
+            .onAppear {
+                withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                    rotation = 15.0
+                }
+            }
+    }
+}
+
+extension View {
+    func smoothOscillation() -> some View {
+        self.modifier(SmoothOscillationModifier())
+    }
+}
+
 struct GameView: View {
     let questions: [Question]
     let studentAnimal: String
@@ -59,13 +79,13 @@ struct GameView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .bellAnimation(delay: 0.0)
+                        .smoothOscillation()
                     Spacer()
                     Image(teacherAnimal)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .bellAnimation(delay: 0.0)
+                        .smoothOscillation()
                 }
                 .padding()
                 
