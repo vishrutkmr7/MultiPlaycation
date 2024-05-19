@@ -19,66 +19,71 @@ struct GameView: View {
     @State private var showingScore = false
     
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Image(studentAnimal)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+            VStack {
                 Spacer()
-                Image(teacherAnimal)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-            }
-            .padding()
-            
-            Text("Score: \(score)")
-                .font(.largeTitle)
-                .padding()
-            
-            Text(questions[questionNumber].text)
-                .font(.title)
-                .padding()
-            
-            TextField("Answer", text: $userAnswer)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
-                .padding()
-            
-            Button("Submit") {
-                checkAnswer()
-            }
-            .padding()
-            .background(Color.green)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            
-            Spacer()
-            
-            VStack(alignment: .leading) {
-                Text("Game Rules:")
-                    .font(.headline)
-                    .padding(.bottom, 5)
-                Text("Number of turns: \(questions.count)")
-                Text("Range: Up to \(questions.first?.text.components(separatedBy: " ")[2] ?? "12")")
-            }
-            .padding()
-            .background(Color.yellow.opacity(0.3))
-            .cornerRadius(10)
-            .padding()
-            
-        }
-        .padding()
-        .alert(isPresented: $showingScore) {
-            Alert(
-                title: Text("Game Over"),
-                message: Text("Your final score is \(score)"),
-                dismissButton: .default(Text("OK")) {
-                    endGame()
+                HStack {
+                    Image(studentAnimal)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                    Spacer()
+                    Image(teacherAnimal)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
                 }
-            )
+                .padding()
+                
+                Text("Score: \(score)")
+                    .font(.largeTitle)
+                    .padding()
+                
+                Text(questions[questionNumber].text)
+                    .font(.title)
+                    .padding()
+                
+                TextField("Answer", text: $userAnswer)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .padding()
+                
+                Button("Submit") {
+                    checkAnswer()
+                }
+                .padding()
+                .background(Color.green)
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    Text("Game Rules:")
+                        .font(.headline)
+                        .padding(.bottom, 5)
+                    Text("Number of turns: \(questions.count)")
+                    Text("Range: Up to \(questions.first?.text.components(separatedBy: " ")[2] ?? "12")")
+                }
+                .padding()
+                .background(Color.yellow.opacity(0.3))
+                .cornerRadius(10)
+                .padding()
+                
+            }
+            .padding()
+            .alert(isPresented: $showingScore) {
+                Alert(
+                    title: Text("Game Over"),
+                    message: Text("Your final score is \(score)"),
+                    dismissButton: .default(Text("OK")) {
+                        endGame()
+                    }
+                )
+            }
         }
     }
     

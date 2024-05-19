@@ -28,6 +28,9 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
             VStack {
                 if gameIsActive {
                     GameView(
