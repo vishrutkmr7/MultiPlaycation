@@ -7,6 +7,35 @@
 
 import SwiftUI
 
+struct BellAnimationModifier: ViewModifier {
+    @State private var rotation: Double = -45
+    @State private var isAnimating = false
+    var delay: Double
+    
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(.degrees(rotation), anchor: .top)
+            .animation(
+                Animation.interpolatingSpring(stiffness: 50, damping: 10)
+                    .repeatForever(autoreverses: true)
+                    .delay(delay),
+                value: rotation
+            )
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    rotation = 15
+                    isAnimating.toggle()
+                }
+            }
+    }
+}
+
+extension View {
+    func bellAnimation(delay: Double = 0) -> some View {
+        self.modifier(BellAnimationModifier(delay: delay))
+    }
+}
+
 struct GameView: View {
     let questions: [Question]
     let studentAnimal: String
@@ -30,11 +59,13 @@ struct GameView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
+                        .bellAnimation(delay: 0.0)
                     Spacer()
                     Image(teacherAnimal)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
+                        .bellAnimation(delay: 0.0)
                 }
                 .padding()
                 
